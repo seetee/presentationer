@@ -61,7 +61,7 @@ jobs:
           MARP_USER: root:root
 
       - name: Check if 2027 folder exists
-        id: docs-folder-exists
+        id: 2027-folder-exists
         run: bash -c "[[ -d 2027 ]] ; echo \"has_2027=\$?\" >> \"$GITHUB_OUTPUT\""
 
       - name: Marp Build (2027 folder, if exists)

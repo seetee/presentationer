@@ -60,18 +60,6 @@ jobs:
         env:
           MARP_USER: root:root
 
-      - name: Check if 2027 folder exists
-        id: check-2027-folder-exists
-        run: bash -c "[[ -d 2027 ]] ; echo \"has_2027=\$?\" >> \"$GITHUB_OUTPUT\""
-
-      - name: Marp Build (2027 folder, if exists)
-        if: steps.check-2027-folder-exists.outputs.has_2027 == '0'
-        uses: docker://marpteam/marp-cli:v3.0.2
-        with:
-          args: 2027/*.md -o build/2027/
-        env:
-          MARP_USER: root:root
-
       - name: Deploy preview
         if: ${{ github.event_name == 'pull_request' }}
         uses: rossjrw/pr-preview-action@v1
